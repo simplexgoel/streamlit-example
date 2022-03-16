@@ -13,7 +13,7 @@ We are busy building this website....
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
-
+st.sidebar.image('./Aflatoon.jpg', caption='Aflatoon', use_column_width=True, output_format="auto")
 
 with st.echo(code_location='below'):
     total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
