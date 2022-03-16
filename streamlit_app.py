@@ -3,6 +3,7 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
 """
 # Welcome to Aflatoon!
@@ -11,10 +12,41 @@ import streamlit as st
 
 We are busy building this website....
 
-In the meantime, below is an example of what you can do with just a few lines of code:
+
 """
 st.sidebar.image('./Aflatoon.jpg', caption='Aflatoon', use_column_width=True, output_format="auto")
 
+
+
+widgetStr = """
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_c2bcc"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/AMEX-SPY/" rel="noopener" target="_blank"><span class="blue-text">SPY Chart</span></a> </div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 600,
+  "height": 400,
+  "symbol": "AMEX:SPY",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "dark",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_c2bcc"
+  }
+      );
+      </script>
+  </div>
+<!-- TradingView Widget END -->
+"""
+# bootstrap 4 collapse example
+components.html(widgetStr, height=600,    )
 #with st.echo(code_location='below'):
 total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
 num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
